@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Башҡортостан — интерактивный путеводитель по Башкортостану</title>
+<meta name="description" content="Интерактивный сайт о башкирах и Башкортостане: история, культура, природа, кухня, известные люди и квиз.">
+<link rel="icon" href="images/flag.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="logo" href="#home">
+      <span class="logo-flower" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="30" height="30">
+          <g fill="currentColor">
+            <ellipse cx="20" cy="8" rx="3.4" ry="8"/>
+            <ellipse cx="20" cy="8" rx="3.4" ry="8" transform="rotate(51.4 20 20)"/>
+            <ellipse cx="20" cy="8" rx="3.4" ry="8" transform="rotate(102.8 20 20)"/>
+            <ellipse cx="20" cy="8" rx="3.4" ry="8" transform="rotate(154.2 20 20)"/>
+            <ellipse cx="20" cy="8" rx="3.4" ry="8" transform="rotate(205.7 20 20)"/>
+            <ellipse cx="20" cy="8" rx="3.4" ry="8" transform="rotate(257.1 20 20)"/>
+            <ellipse cx="20" cy="8" rx="3.4" ry="8" transform="rotate(308.5 20 20)"/>
+          </g>
+          <circle cx="20" cy="20" r="4.5" fill="var(--accent2)"/>
+        </svg>
+      </span>
+      <span class="logo-text">Башҡортостан</span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="Основная навигация">
+      <a href="#home" data-nav="home">Главная</a>
+      <a href="#history" data-nav="history">История</a>
+      <a href="#nature" data-nav="nature">Природа</a>
+      <a href="#culture" data-nav="culture">Культура</a>
+      <a href="#cuisine" data-nav="cuisine">Кухня</a>
+      <a href="#people" data-nav="people">Люди</a>
+      <a href="#gallery" data-nav="gallery">Галерея</a>
+      <a href="#quiz" data-nav="quiz" class="nav-quiz">Квиз 🎯</a>
+    </nav>
+    <div class="header-actions">
+      <button id="themeToggle" class="icon-btn" title="Сменить тему" aria-label="Сменить тему">🌙</button>
+      <button id="burger" class="icon-btn burger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="progress-bar"><div id="scrollProgress"></div></div>
+</header>
+
+<main id="app">
+
+  <!-- ============ ГЛАВНАЯ ============ -->
+  <section class="page" id="page-home">
+    <div class="hero">
+      <div class="hero-slides" id="heroSlides"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-kicker">Республика Башкортостан · Рәсәй</p>
+        <h1>Земля семи родов<br>и горного мёда</h1>
+        <p class="hero-sub">Южный Урал, степь и тайга, кочевые традиции и миллионный город — Башкортостан соединяет несоединимое. Исследуйте республику интерактивно.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#nature">🗺️ Открыть карту</a>
+          <a class="btn btn-ghost" href="#quiz">Пройти квиз</a>
+        </div>
+      </div>
+      <div class="hero-dots" id="heroDots"></div>
+    </div>
+
+    <div class="container">
+      <div class="stats-row" id="statsRow">
+        <div class="stat-card"><div class="stat-num" data-target="142947" data-format="space">0</div><div class="stat-label">км² — площадь республики</div></div>
+        <div class="stat-card"><div class="stat-num" data-target="4000000" data-format="mln">0</div><div class="stat-label">человек — население</div></div>
+        <div class="stat-card"><div class="stat-num" data-target="160" data-suffix="+">0</div><div class="stat-label">национальностей живут в республике</div></div>
+        <div class="stat-card"><div class="stat-num" data-target="1574">0</div><div class="stat-label">год основания Уфы</div></div>
+      </div>
+
+      <h2 class="section-title">С чего начать?</h2>
+      <div class="home-cards">
+        <a class="home-card" href="#history">
+          <img src="images/kapova.jpg" alt="Капова пещера" loading="lazy">
+          <div><h3>⏳ 16 000 лет истории</h3><p>От палеолитической живописи в пещере Шульган-Таш до первой национальной автономии России.</p></div>
+        </a>
+        <a class="home-card" href="#culture">
+          <img src="images/kurai-plant.jpg" alt="Цветок курая" loading="lazy">
+          <div><h3>🎶 Культура и курай</h3><p>Язык, семилепестковый цветок-символ, национальный костюм, юрта-тирмэ и праздник Сабантуй.</p></div>
+        </a>
+        <a class="home-card" href="#cuisine">
+          <img src="images/beshbarmak.jpg" alt="Бишбармаҡ" loading="lazy">
+          <div><h3>🍯 Кухня кочевников</h3><p>Бишбармаҡ, кымыҙ, бортевой мёд и сек-сек к чаю — попробуйте глазами.</p></div>
+        </a>
+        <a class="home-card" href="#people">
+          <img src="images/salavat.jpg" alt="Памятник Салавату Юлаеву" loading="lazy">
+          <div><h3>🏆 Известные люди</h3><p>Салават Юлаев, Мустай Карим, Рудольф Нуреев и другие имена, прославившие республику.</p></div>
+        </a>
+      </div>
+
+      <div class="fact-box">
+        <div class="fact-box-head">
+          <h2>Знаете ли вы?</h2>
+          <button class="btn btn-small" id="factBtn">Ещё факт ↻</button>
+        </div>
+        <p id="factText" class="fact-text"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ИСТОРИЯ ============ -->
+  <section class="page" id="page-history">
+    <div class="page-hero" style="background-image:url('images/bashkirs-hist.jpg')">
+      <h1>История: от ледникового периода до автономии</h1>
+      <p>Нажмите на эпоху на ленте времени, чтобы узнать подробности</p>
+    </div>
+    <div class="container">
+      <div class="timeline">
+        <div class="timeline-track" id="timelineTrack"></div>
+      </div>
+      <div class="timeline-detail" id="timelineDetail">
+        <div class="timeline-detail-inner">
+          <img id="timelineImg" src="" alt="">
+          <div>
+            <span class="timeline-year" id="timelineYear"></span>
+            <h2 id="timelineTitle"></h2>
+            <p id="timelineText"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПРИРОДА ============ -->
+  <section class="page" id="page-nature">
+    <div class="page-hero" style="background-image:url('images/iremel.jpg')">
+      <h1>Природа Башкортостана</h1>
+      <p>Интерактивная карта: нажмите на точку, чтобы узнать о месте</p>
+    </div>
+    <div class="container">
+      <div class="map-wrap">
+        <div class="map-legend">
+          <span><i class="dot dot-city"></i>Города</span>
+          <span><i class="dot dot-nature"></i>Природа</span>
+        </div>
+        <div class="map-canvas" id="mapCanvas">
+          <img src="images/relief-map.png" alt="Карта Башкортостана" draggable="false">
+          <!-- маркеры добавит скрипт -->
+        </div>
+        <div class="map-info" id="mapInfo">
+          <div class="map-info-empty">👆 Выберите точку на карте</div>
+          <div class="map-info-body" hidden>
+            <img id="mapInfoImg" src="" alt="">
+            <div class="map-info-text">
+              <span class="map-info-tag" id="mapInfoTag"></span>
+              <h3 id="mapInfoTitle"></h3>
+              <p id="mapInfoText"></p>
+              <div class="map-info-extra" id="mapInfoExtra"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="geo-strip">
+        <div class="geo-item"><b>🔻</b> Самая высокая точка — гора Ямантау (1640 м)</div>
+        <div class="geo-item"><b>🌊</b> Более 2000 рек и около 2500 озёр</div>
+        <div class="geo-item"><b>🌲</b> Лесами покрыто около 40% территории</div>
+        <div class="geo-item"><b>🪨</b> Шиханы — остатки коралловых рифов пермского моря (~280 млн лет)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ КУЛЬТУРА ============ -->
+  <section class="page" id="page-culture">
+    <div class="page-hero" style="background-image:url('images/dance.jpg')">
+      <h1>Народ и культура</h1>
+      <p>Башкиры — тюркский народ Южного Урала, коренное население Башкортостана</p>
+    </div>
+    <div class="container">
+      <div class="tabs" id="cultureTabs">
+        <button class="tab-btn active" data-tab="lang">🗣️ Язык</button>
+        <button class="tab-btn" data-tab="kurai">🎶 Курай</button>
+        <button class="tab-btn" data-tab="costume">👗 Костюм</button>
+        <button class="tab-btn" data-tab="yurt">⛺ Юрта-тирмэ</button>
+        <button class="tab-btn" data-tab="sabantuy">🤸 Сабантуй</button>
+      </div>
+
+      <div class="tab-panel active" data-panel="lang">
+        <div class="tab-grid">
+          <div class="tab-text">
+            <h2>Башкирский язык</h2>
+            <p>Башкирский язык (<i>башҡорт теле</i>) относится к тюркской языковой семье, к её кипчакской группе. Он — государственный язык Республики Башкортостан наряду с русским. Пишется кириллицей с особыми буквами: <b>ә, ө, ү, ғ, ҡ, ң, ҙ, ҫ, һ</b>.</p>
+            <p>Попробуйте выучить основные фразы — они записаны по-башкирски и по-русски.</p>
+          </div>
+          <img class="tab-img" src="images/alphabet.jpg" alt="Башкирский алфавит" loading="lazy">
+        </div>
+        <h3 class="phrase-title">Башкирский разговорник</h3>
+        <div class="phrases" id="phrases"></div>
+      </div>
+
+      <div class="tab-panel" data-panel="kurai">
+        <div class="tab-grid">
+          <div class="tab-text">
+            <h2>Курай — голос степи</h2>
+            <p>Курай (<i>ҡурай</i>) — длинная продольная флейта (около метра) из стебля зонтичного растения курая, растущего на склонах Южного Урала. Инструмент — древнейший символ башкиров: его семилепестковый цветок изображён на гербе и флаге республики.</p>
+            <p>Игра на курае (<i>ҡурайсы</i>) в 2019 году внесена в список нематериального культурного наследия ЮНЕСКО. Мелодии часто подражают пению птиц и шуму ветра.</p>
+            <button class="btn btn-primary" id="kuraiPlay">🎵 Послушать мелодию курая</button>
+          </div>
+          <div class="tab-img-col">
+            <img class="tab-img" src="images/kurai-plant.jpg" alt="Растение курай" loading="lazy">
+            <img class="tab-img" src="images/kurai-inst.jpg" alt="Курай — инструмент" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="costume">
+        <div class="tab-grid">
+          <div class="tab-text">
+            <h2>Национальный костюм</h2>
+            <p>Башкирский костюм складывался в условиях кочевого быта. Мужчины носили рубаху, штаны, лёгкий халат <b>йылғаҡ</b> и елан (кафтан), ночью — тепла (меховую одежду). Головной убор — тюбетейка <b>түбәтәй</b>, поверх — меховая шапка.</p>
+            <p>Женский костюм — платье с оборками, нагрудник <b>сельтер</b>, украшенный кораллами и монетами, и головной убор <b>ҡашмау</b> с подвесками, спускающимися на лицо. Обилие серебра и кораллов — примета достатка и обереги одновременно.</p>
+            <p>Особая гордость — орнамент: растительные и геометрические мотивы, часто в красно-зелёно-жёлтой гамме.</p>
+          </div>
+          <div class="tab-img-col">
+            <img class="tab-img" src="images/costume.jpg" alt="Башкирский праздничный костюм" loading="lazy">
+            <img class="tab-img" src="images/costume2.jpg" alt="Костюм XIX века" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="yurt">
+        <div class="tab-grid">
+          <div class="tab-text">
+            <h2>Тирмэ — войлочная юрта</h2>
+            <p>Тирмэ — разборное жилище башкир-кочевников: деревянный каркас из решёток и жердей, покрытых войлоком. Собирается за час, тёплая зимой и прохладная летом.</p>
+            <p>Внутри было чёткое деление: правая (мужская) половина — конская сбруя, оружие; левая (женская) — посуда, утварь. В центре — очаг, напротив входа — почётное место для гостей. Дверь всегда смотрела на восток.</p>
+            <p>Кочевание (<i>йәйләү</i> — летнее пастбище) ушло в прошлое к началу XX века, но юрта до сих пор ставится на праздниках как символ гостеприимства.</p>
+          </div>
+          <img class="tab-img" src="images/yurt.jpg" alt="Башкирская юрта" loading="lazy">
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="sabantuy">
+        <div class="tab-grid">
+          <div class="tab-text">
+            <h2>Сабантуй — праздник плуга</h2>
+            <p>Сабантуй (<i>һабантуй</i>) — древний весенний праздник окончания посевных работ, главная народная гуляния Башкортостана. В 2023 году он получил статус федерального праздника России.</p>
+            <p>Программа неисчерпаема:</p>
+            <ul class="check-list">
+              <li>🤼 <b>Көрәш</b> — борьба на кушаках, победитель получает барана</li>
+              <li>🪵 <b>Бег с ложкой во рту</b> — с монеткой-спиралью на конце</li>
+              <li>🥔 <b>Бег в мешках</b> и добывание приза по гладкому столбу</li>
+              <li>🏹 Стрельба из лука, скачки, перетягивание палки</li>
+              <li>🍲 Общее угощение: һалма, баурсак, кымыҙ</li>
+            </ul>
+          </div>
+          <div class="tab-img-col">
+            <img class="tab-img" src="images/sabantuy.jpg" alt="Игры на Сабантуе" loading="lazy">
+            <img class="tab-img" src="images/honey1.jpg" alt="Пасечники Башкортостана" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ КУХНЯ ============ -->
+  <section class="page" id="page-cuisine">
+    <div class="page-hero" style="background-image:url('images/chakchak.jpg')">
+      <h1>Башкирская кухня</h1>
+      <p>Фильтруйте блюда по категориям и нажмите на карточку, чтобы узнать рецепт</p>
+    </div>
+    <div class="container">
+      <div class="filters" id="dishFilters">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="meat">🍖 Мясное</button>
+        <button class="filter-btn" data-filter="drink">🥛 Напитки</button>
+        <button class="filter-btn" data-filter="sweet">🍬 Сладкое</button>
+        <button class="filter-btn" data-filter="other">🥟 Прочее</button>
+      </div>
+      <div class="dish-grid" id="dishGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ ЛЮДИ ============ -->
+  <section class="page" id="page-people">
+    <div class="page-hero" style="background-image:url('images/ufa-panoramio.jpg')">
+      <h1>Люди, прославившие Башкортостан</h1>
+      <p>Нажмите на карточку, чтобы развернуть биографию</p>
+    </div>
+    <div class="container">
+      <div class="people-grid" id="peopleGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ ГАЛЕРЕЯ ============ -->
+  <section class="page" id="page-gallery">
+    <div class="page-hero" style="background-image:url('images/zigalga.jpg')">
+      <h1>Галерея</h1>
+      <p>Нажмите на фото, чтобы открыть в полном размере (стрелки ← → листают)</p>
+    </div>
+    <div class="container">
+      <div class="filters" id="galleryFilters">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="city">🏙️ Города</button>
+        <button class="filter-btn" data-filter="nature">🏔️ Природа</button>
+        <button class="filter-btn" data-filter="culture">🎨 Культура</button>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ КВИЗ ============ -->
+  <section class="page" id="page-quiz">
+    <div class="page-hero" style="background-image:url('images/asylykul.jpg')">
+      <h1>Квиз: как хорошо вы знаете Башкортостан?</h1>
+      <p>10 вопросов — от простых до совсем каверзных</p>
+    </div>
+    <div class="container quiz-container">
+      <div id="quizStart">
+        <p class="quiz-intro">Проверьте себя! За каждый правильный ответ — балл. Рекорд сохраняется в вашем браузере.</p>
+        <button class="btn btn-primary btn-big" id="quizBegin">Начать квиз</button>
+        <p class="quiz-best" id="quizBest"></p>
+      </div>
+      <div id="quizGame" hidden>
+        <div class="quiz-progress"><div id="quizProgressBar"></div><span id="quizProgressText"></span></div>
+        <div class="quiz-card">
+          <h3 id="quizQuestion"></h3>
+          <div class="quiz-answers" id="quizAnswers"></div>
+          <p class="quiz-explain" id="quizExplain" hidden></p>
+          <button class="btn btn-primary" id="quizNext" hidden>Далее →</button>
+        </div>
+      </div>
+      <div id="quizResult" hidden>
+        <div class="quiz-result-card">
+          <div class="quiz-score" id="quizScore"></div>
+          <h2 id="quizVerdict"></h2>
+          <p id="quizVerdictText"></p>
+          <button class="btn btn-primary" id="quizRestart">↻ Пройти ещё раз</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <b>Башҡортостан</b> — интерактивный путеводитель
+      <p>Сделано с ❤️ к Южному Уралу. Фотографии — Wikimedia Commons.</p>
+    </div>
+    <div class="footer-flag">
+      <img src="images/flag.png" alt="Флаг Башкортостана">
+      <p>Синий — чистота и ясность мысли народа,<br>белый — миролюбие и открытость,<br>зелёный — свобода и вечность жизни.<br>Семь лепестков курая — семь родов башкир.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" title="Наверх">↑</button>
+
+<!-- Лайтбокс -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lb-close" id="lbClose">×</button>
+  <button class="lb-arrow lb-prev" id="lbPrev">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-arrow lb-next" id="lbNext">›</button>
+  <p class="lb-caption" id="lbCaption"></p>
+</div>
+
+<!-- Модалка рецепта -->
+<div class="modal" id="dishModal" hidden>
+  <div class="modal-card">
+    <button class="lb-close" id="dishModalClose">×</button>
+    <img id="dishModalImg" src="" alt="">
+    <div class="modal-body">
+      <h3 id="dishModalTitle"></h3>
+      <p id="dishModalText"></p>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
